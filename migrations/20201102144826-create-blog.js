@@ -1,7 +1,7 @@
 "use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("answers", {
+    return queryInterface.createTable("blogs", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,15 +10,9 @@ module.exports = {
       },
       title: {
         type: Sequelize.STRING,
-      }
-      question_id: {
-        type: Sequelize.INTEGER,
       },
-      answer_order: {
+      blog_number: {
         type: Sequelize.INTEGER,
-      },
-      correct_answer: {
-        type: Sequelize.BOOLEAN,
       },
       createdAt: {
         allowNull: false,
@@ -31,6 +25,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("answers");
+    return queryInterface.dropTable("blogs");
   },
 };
