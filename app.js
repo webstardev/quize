@@ -8,7 +8,8 @@ const app = express();
 const env = process.env.NODE_ENV || "development";
 const CONFIG = require("./config/config")[env];
 
-const baseRouter = require("./routes/base.routes");
+const questionRouter = require("./routes/question.routes");
+const answerRouter = require("./routes/answer.routes");
 
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
@@ -26,10 +27,17 @@ models.sequelize
     console.error("Unable to connect to SQL database:", CONFIG.database, err);
   });
 
+if (CONFIG.app === "dev") {
+  models.sequelize.sync().then(() => {}); //creates table if they do not already exist
+  // models.sequelize.sync({ force: true });//deletes all tables then recreates them useful for testing and development purposes
+}
 // CORS
 app.use(cors());
 
 // Routes
+
+app.use("/v1/question", questionRouter);
+app.use("/v1/answer", answerRouter);
 
 app.use("/", function (req, res) {
   res.header("Access-Control-Allow-Origin", "*");
