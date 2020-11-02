@@ -10,10 +10,10 @@ module.exports = (sequelize, DataTypes) => {
   );
   question.associate = function (models) {
     // associations can be defined here
-    question.hasMany(models.answer, {
-      as: "answer",
-      foreignKey: "question_id",
-    });
+    // question.hasMany(models.answer, {
+    //   as: "answer",
+    //   foreignKey: "question_id",
+    // });
   };
   return question;
 };
