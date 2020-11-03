@@ -8,6 +8,7 @@ const app = express();
 const env = process.env.NODE_ENV || "development";
 const CONFIG = require("./config/config")[env];
 
+const blogRouter = require("./routes/blog.routes");
 const questionRouter = require("./routes/question.routes");
 const answerRouter = require("./routes/answer.routes");
 
@@ -35,7 +36,7 @@ if (CONFIG.app === "dev") {
 app.use(cors());
 
 // Routes
-
+app.use("/v1/blog", blogRouter);
 app.use("/v1/question", questionRouter);
 app.use("/v1/answer", answerRouter);
 
