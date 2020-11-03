@@ -10,8 +10,6 @@ tutorial can be found here: https://medium.com/@brianalois/build-a-rest-api-for-
 
 ##### ORM Database : Sequelize
 
-##### Authentication : Passport, JWT
-
 ## Installation
 
 #### Download Code | Clone the Repo
@@ -25,6 +23,12 @@ git clone {repo_name}
 ```
 npm install
 ```
+
+#### Create DB 'quize' on the mysql server
+
+#### Table will be created when run `npm run start`
+
+#### whole data will be inserted with this command sequelize db:seed:all
 
 #### Create .env File
 
